@@ -3,13 +3,14 @@ var generateBtn = document.querySelector("#generate");
 
 
 //Arrays needed for password characters
-var charNum = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9",]
-var charSpecial = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")"]
+var charNum = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9",];
+var charSpecial = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")"];
 var charLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var charUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var passOriginalLength = 0;
 
-// Confirmation declarations
+
+//Confirmation declarations
 var confirmPassLength = "";
 var confirmSpecialCharacters;
 var confirmNumericCharacters;
@@ -25,6 +26,16 @@ var resultNum = "";
 //TODO: Promt #1: Asking a user how long they would like their password to be. If a password is outside parameters, return to question.
 //If condition
 //
+// Write password to the #password input
+function writePassword() {
+    var password = generatePassword();
+    var passwordText = document.querySelector("#password");
+  
+    // variable 'password' is displayed to the text area in html
+    passwordText.value = password;
+  
+}
+
 function collectPasswordLength() {
     var confirmPassLength = parseInt(prompt("Please select a password length between 8 and 128 characters!"));
     if (!confirmPassLength) {
@@ -53,8 +64,8 @@ collectPasswordLength();
     //if the user selects a lowercase/uppercase/special/numerical character, and there is space left in the amount of character slots in the 
 //password, then add characters until the threshold is reached.
 function gatherPassword(){
-
-    let password = "";
+    var result = "";
+    
 
     while (passOriginalLength < confirmPassLength) {
         if (confirmLowerCharacters === true && passOriginalLength < confirmPassLength) {
@@ -77,7 +88,7 @@ function gatherPassword(){
             resultSC = resultSC + specialCharacters;
             passOriginalLength++;
         }
-        return password;
+        return result;
     }
     
     }
@@ -100,19 +111,6 @@ password.shuffle = function gatherPassword() {
     }
     return random.join("");
 }
-
-
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  // variable 'password' is displayed to the text area in html
-  passwordText.value = password;
-
-}
-
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
