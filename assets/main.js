@@ -28,7 +28,7 @@ var resultNum = "";
 //
 // Write password to the #password input
 function writePassword() {
-    var password = generatePassword();
+    var password = "";
     var passwordText = document.querySelector("#password");
   
     // variable 'password' is displayed to the text area in html
@@ -49,7 +49,7 @@ collectPasswordLength();
 // Used to determine what the user wants in their password pool.
     confirmUpperCharacters = window.confirm("Should it contain uppercase letters? (Ok = Yes | Cancel = No)");
     confirmLowerCharacters = window.confirm("Should it contain lowercase letters? (Ok = Yes | Cancel = No)");
-    confirmNumericCharacters = window.confirm("Should it contain unumbers? (Ok = Yes | Cancel = No)");
+    confirmNumericCharacters = window.confirm("Should it contain numbers? (Ok = Yes | Cancel = No)");
     confirmSpecialCharacters = window.confirm("Should it contain special characters? (Ok = Yes | Cancel = No)");
 
 // Colecting Edge cases for selecting no on each prompt
